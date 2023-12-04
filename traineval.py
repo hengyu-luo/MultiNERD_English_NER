@@ -12,11 +12,11 @@ tokenizer = BertTokenizerFast.from_pretrained('bert-base-cased')
 def compute_metrics(predictions, labels, label_list):
     predictions = np.argmax(predictions, axis=2)
     true_predictions = [
-        [str(label_list[p]) for (p, l) in zip(prediction, label) if l != -100]
+        [label_list[p] for (p, l) in zip(prediction, label) if l != -100]
         for prediction, label in zip(predictions, labels)
     ]
     true_labels = [
-        [str(label_list[l]) for (p, l) in zip(prediction, label) if l != -100]
+        [label_list[l] for (p, l) in zip(prediction, label) if l != -100]
         for prediction, label in zip(predictions, labels)
     ]
     results = seqeval.compute(predictions=true_predictions, references=true_labels)
@@ -78,9 +78,53 @@ if __name__ == "__main__":
 
     if args.system == "a":
         tokenized_dataset_a = load_from_disk("./tokenized_dataset_a")
-        label_list_a = [i for i in range(NUM_LABEL_A)]  # Label list for System A
+        label_list_a = [
+                    "O",       # 0
+                    "B-PER",   # 1
+                    "I-PER",   # 2
+                    "B-ORG",   # 3
+                    "I-ORG",   # 4
+                    "B-LOC",   # 5
+                    "I-LOC",   # 6
+                    "B-ANIM",  # 7
+                    "I-ANIM",  # 8
+                    "B-BIO",   # 9
+                    "I-BIO",   # 10
+                    "B-CEL",   # 11
+                    "I-CEL",   # 12
+                    "B-DIS",   # 13
+                    "I-DIS",   # 14
+                    "B-EVE",   # 15
+                    "I-EVE",   # 16
+                    "B-FOOD",  # 17
+                    "I-FOOD",  # 18
+                    "B-INST",  # 19
+                    "I-INST",  # 20
+                    "B-MEDIA", # 21
+                    "I-MEDIA", # 22
+                    "B-MYTH",  # 23
+                    "I-MYTH",  # 24
+                    "B-PLANT", # 25
+                    "I-PLANT", # 26
+                    "B-TIME",  # 27
+                    "I-TIME",  # 28
+                    "B-VEHI",  # 29
+                    "I-VEHI"   # 30
+                ]  # Label list for System A
         train_system(tokenized_dataset_a, "system_a", NUM_LABEL_A, label_list_a)
     elif args.system == "b":
         tokenized_dataset_b = load_from_disk("./tokenized_dataset_b")
-        label_list_b = [i for i in range(NUM_LABEL_B)]  # Label list for System B
+        label_list_b = [
+                    "O",       # 0
+                    "B-PER",   # 1
+                    "I-PER",   # 2
+                    "B-ORG",   # 3
+                    "I-ORG",   # 4
+                    "B-LOC",   # 5
+                    "I-LOC",   # 6
+                    "B-ANIM",  # 7
+                    "I-ANIM",  # 8
+                    "B-DIS",   # 9
+                    "I-DIS",   # 10
+                ]  # Label list for System B
         train_system(tokenized_dataset_b, "system_b", NUM_LABEL_B, label_list_b)
