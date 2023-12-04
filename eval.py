@@ -53,7 +53,7 @@ if __name__ == "__main__":
     # Load the dataset
     tokenized_dataset = load_from_disk(args.data_path)
 
-    # 根据选择的系统设置标签列表
+
     if args.system == "a":
         label_list = [
                     "O",       # 0
@@ -87,7 +87,7 @@ if __name__ == "__main__":
                     "I-TIME",  # 28
                     "B-VEHI",  # 29
                     "I-VEHI"   # 30
-                ]  # System A 的标签列表
+                ]  
     elif args.system == "b":
         label_list = [
                     "O",       # 0
@@ -101,7 +101,7 @@ if __name__ == "__main__":
                     "I-ANIM",  # 8
                     "B-DIS",   # 9
                     "I-DIS",   # 10
-                ]  # System B 的标签列表
+                ]  
 
-    # 评估模型
+
     evaluate_model(tokenized_dataset, args.model_path, label_list)
