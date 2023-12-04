@@ -23,18 +23,33 @@ Run `eval.py` with required arguments:
     - Model Path: Path to the trained model checkpoint in Google Drive.
     - Data Path: Path to the tokenized dataset.
     - System: Specify the system ('a' or 'b').
-   Example command: `python traineval.py --model_path /content/drive/MyDrive/path_to_model --data_path ./tokenized_dataset_a --system a`
+   Example command: `!python eval.py --model_path /content/results_system_b/checkpoint-xxx --data_path ./tokenized_dataset_b --system b`
 
 ## Evaluation
 Models are evaluated using precision, recall, F1-score, and accuracy. These metrics are essential in NER tasks to assess the model's ability to correctly identify and classify entities. 
 
-### Understanding NER Evaluation Metrics
 - **Accuracy**: Measures the proportion of correct predictions (both entities and non-entities) over all predictions.
 - **Precision**: Indicates the proportion of predicted entities that are correct.
 - **Recall**: Measures the proportion of actual entities that the model correctly identified.
 - **F1 Score**: Provides a balance between precision and recall, offering a single measure of overall model performance.
 
 In NER, precision and recall are particularly crucial because the data often contains significantly more non-entity tokens than entities. The F1 score, as a harmonic mean of precision and recall, serves as a comprehensive measure of a model's effectiveness in recognizing and categorizing entities correctly.
+
+
+## Training Hyperparameters
+The models are trained with the following hyperparameters:
+- Evaluation Strategy: `steps`
+- Evaluation Steps: `2000`
+- Learning Rate: `2e-5`
+- Batch Size per Device for Training: `16`
+- Batch Size per Device for Evaluation: `16`
+- Number of Training Epochs: `2`
+- Weight Decay: `0.01`
+- Save Strategy: `epoch`
+- Save Total Limit: `2`
+- Reporting to WandB: Enabled
+- Run Name: Set dynamically based on the system being trained (`system_a` or `system_b`)
+
 
 ## Note
 This project supports WandB logging. If you have a WandB account, you can get logged in for training monitoring. More instructions from WandB will show at the start of the training process.
