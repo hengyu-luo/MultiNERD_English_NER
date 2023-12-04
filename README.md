@@ -38,17 +38,20 @@ In NER, precision and recall are particularly crucial because the data often con
 
 ## Training Hyperparameters
 The models are trained with the following hyperparameters:
-- Evaluation Strategy: `steps`
-- Evaluation Steps: `2000`
-- Learning Rate: `2e-5`
-- Batch Size per Device for Training: `16`
-- Batch Size per Device for Evaluation: `16`
-- Number of Training Epochs: `2`
-- Weight Decay: `0.01`
-- Save Strategy: `epoch`
-- Save Total Limit: `2`
-- Reporting to WandB: Enabled
-- Run Name: Set dynamically based on the system being trained (`system_a` or `system_b`)
+
+| Hyperparameter                    | Value          |
+| --------------------------------- | -------------- |
+| Evaluation Strategy               | steps          |
+| Evaluation Steps                  | 2000           |
+| Learning Rate                     | 2e-5           |
+| Batch Size per Device (Training)  | 16             |
+| Batch Size per Device (Evaluation)| 16             |
+| Number of Training Epochs         | 2              |
+| Weight Decay                      | 0.01           |
+| Save Strategy                     | epoch          |
+| Save Total Limit                  | 2              |
+| Reporting to WandB                | Enabled        |
+| Run Name                          | system_a/system_b (dynamically set) |
 
 
 ## Note
