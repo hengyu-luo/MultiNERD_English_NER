@@ -13,7 +13,9 @@ This project involves training and evaluating Named Entity Recognition models on
 2. You can now run train.py with a command-line argument to specify which system to train. For example:
 
     To train System A: `python train.py --system a`
+   
     To train System B: `python train.py --system b`
+   
 This approach keeps your code organized and avoids duplication. The script determines which system to train based on the provided command-line argument, making it easy to switch between training System A and System B.
 
 ## Systems
