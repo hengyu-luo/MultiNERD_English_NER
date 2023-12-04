@@ -9,7 +9,8 @@ seqeval = evaluate.load("seqeval")
 # Initialize tokenizer
 tokenizer = BertTokenizerFast.from_pretrained('bert-base-cased')
 
-def compute_metrics(predictions, labels, label_list):
+def compute_metrics(p, label_list):
+    predictions, labels = p
     predictions = np.argmax(predictions, axis=2)
     true_predictions = [
         [label_list[p] for (p, l) in zip(prediction, label) if l != -100]
