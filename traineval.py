@@ -2,7 +2,7 @@ import argparse
 import numpy as np
 import evaluate
 from transformers import BertTokenizerFast, BertForTokenClassification, TrainingArguments, Trainer, DataCollatorForTokenClassification
-from data_preparation import load_from_disk
+from datasets import load_from_disk
 
 seqeval = evaluate.load("seqeval")
 
