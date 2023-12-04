@@ -15,15 +15,22 @@ This project involves training and evaluating Named Entity Recognition models ba
 Run `python data_preparation.py` to prepare the dataset for both the training processes of system A and B.
 ### 2. Train and Evaluate the Model
 Run `train.py` with a command-line argument to specify which system to train. For example:
-    - To train System A: `python train.py --system a`
-    - To train System B: `python train.py --system b`
+
+- To train System A: `python train.py --system a`
+
+- To train System B: `python train.py --system b`
+    
 The script determines which system to train, either A or B, based on the provided command-line argument.
 ### 3. Want to Do Direct Evaluation with Existing Model (Checkpoints)?
 Run `eval.py` with required arguments:
-    - Model Path: Path to the trained model checkpoint in Google Drive.
-    - Data Path: Path to the tokenized dataset.
-    - System: Specify the system ('a' or 'b').
-   Example command: `!python eval.py --model_path /content/results_system_b/checkpoint-xxx --data_path ./tokenized_dataset_b --system b`
+
+- Model Path: Path to the trained model checkpoint in Google Drive.
+- Data Path: Path to the tokenized dataset.
+- System: Specify the system ('a' or 'b').
+
+Example command:
+
+`python eval.py --model_path /content/results_system_b/checkpoint-xxx --data_path ./tokenized_dataset_b --system b`
 
 ## Evaluation
 Models are evaluated using precision, recall, F1-score, and accuracy. These metrics are essential in NER tasks to assess the model's ability to correctly identify and classify entities. 
